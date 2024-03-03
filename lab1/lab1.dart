@@ -2,7 +2,7 @@ import 'dart:io';
 
 void main() {
   print("Welcome to the Console Calculator!");
-  
+
   while (true) {
     stdout.write("Enter the first number: ");
     double num1 = double.tryParse(stdin.readLineSync() ?? '');
@@ -10,41 +10,47 @@ void main() {
       print("Invalid input. Please enter a valid number.");
       continue;
     }
-    
+
     stdout.write("Enter the second number: ");
     double num2 = double.tryParse(stdin.readLineSync() ?? '');
     if (num2 == null) {
       print("Invalid input. Please enter a valid number.");
       continue;
     }
-    
-    stdout.write("Enter the operator (+, -, *, /, ^ for exponentiation, sqrt for square root): ");
+
+    stdout.write(
+        "Enter the operator (+, -, *, /, ^ for exponentiation, sqrt for square root): ");
     String? operator = stdin.readLineSync();
-    
+
     if (operator == null || !isValidOperator(operator)) {
       print("Invalid operator. Please enter a valid operator.");
       continue;
     }
-    
+
     double result = performOperation(num1, num2, operator);
     if (result.isNaN) {
       print("Error: Division by zero.");
     } else {
       print("Result: $result");
     }
-    
+
     stdout.write("Do you want to perform another calculation? (yes/no): ");
     String? continueChoice = stdin.readLineSync()?.toLowerCase();
     if (continueChoice != 'yes') {
       break;
     }
   }
-  
+
   print("Goodbye!");
 }
 
 bool isValidOperator(String operator) {
-  return operator == '+' || operator == '-' || operator == '*' || operator == '/' || operator == '^' || operator == 'sqrt';
+  return operator == '+' ||
+      operator == '-' ||
+      operator == '*' ||
+      operator == '/' ||
+      operator == '^' ||
+      operator == 'sqrt';
 }
 
 double performOperation(double num1, double num2, String operator) {
