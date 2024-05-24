@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
-class SecondScreen extends StatelessWidget {
+class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Second Screen'),
+        title: Text('Add Task'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pop(context);
+            // Add task logic here
+            Navigator.pop(context); // Go back to previous screen
           },
-          child: Text('Go back'),
+          child: Text('Add Task'),
         ),
       ),
     );
